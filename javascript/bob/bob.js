@@ -7,26 +7,22 @@ var Bob = function() {};
 
 Bob.prototype.hey = function(input) {
 
-  containsQuestionMark = function(input) {
+  isQuestion = function(input) {
     return isNaN(input) && input.indexOf("?") > -1 && input.slice(-1) === '?';
   }
 
-  containsAnything = function(input) {
-    return input.length !== 0;
-  }
-
-  containsUpperCase = function(input) {
+  isYelling = function(input) {
     return input.toUpperCase() === input && input.toLowerCase() !== input;
   }
 
-  containsNothing = function(input) {
+  isNothing = function(input) {
     return input === '' || !input.trim();
   }
 
-  if(containsNothing(input)) return 'Fine. Be that way!';
-  if(containsUpperCase(input)) return 'Whoa, chill out!';
-  if(containsQuestionMark(input)) return 'Sure.';
-  if(containsAnything(input)) return 'Whatever.';
+  if(isNothing(input)) return 'Fine. Be that way!';
+  if(isYelling(input)) return 'Whoa, chill out!';
+  if(isQuestion(input)) return 'Sure.';
+  return 'Whatever.';
 };
 
 module.exports = Bob;
